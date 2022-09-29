@@ -17,9 +17,18 @@ public class Greet {
     public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
 
         // model attributes are visible to Thymeleaf when HTML is "pre-processed"
+        int len = 0;
+        if (name.length()>0){
+            len = name.length();
+
+        }
+        String print = "input has " + len + " characters";
+        
         model.addAttribute("name", name);
+        model.addAttribute("print", print);
 
         // load HTML VIEW (greet.html)
+   
         return "greet"; 
 
     }
