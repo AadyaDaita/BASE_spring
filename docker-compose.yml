@@ -4,9 +4,10 @@ services:
     image: java_springv1
     build: .
     ports:
-      - "8085:8085"
+      - "8084:8084"
     volumes:
       - persistent_volume:/app/volumes
+    restart: unless-stopped
 volumes:
   persistent_volume:
     driver: local
