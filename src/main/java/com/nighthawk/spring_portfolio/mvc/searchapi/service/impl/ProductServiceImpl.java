@@ -1,7 +1,7 @@
 package com.nighthawk.spring_portfolio.mvc.searchapi.service.impl;
 
 
-import com.nighthawk.spring_portfolio.mvc.searchapi.entity.Product;
+import com.nighthawk.spring_portfolio.mvc.searchapi.products.Product;
 import com.nighthawk.spring_portfolio.mvc.searchapi.repository.ProductRepository;
 import com.nighthawk.spring_portfolio.mvc.searchapi.service.ProductService;
 import org.springframework.stereotype.Service;

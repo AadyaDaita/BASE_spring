@@ -4,7 +4,7 @@ package com.nighthawk.spring_portfolio.mvc.searchapi.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.nighthawk.spring_portfolio.mvc.searchapi.entity.Product;
+import com.nighthawk.spring_portfolio.mvc.searchapi.products.Product;
 
 import java.util.List;
 

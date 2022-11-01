@@ -1,6 +1,6 @@
 package com.nighthawk.spring_portfolio.mvc.searchapi.controller;
 
-import com.nighthawk.spring_portfolio.mvc.searchapi.entity.Product;
+import com.nighthawk.spring_portfolio.mvc.searchapi.products.Product;
 import com.nighthawk.spring_portfolio.mvc.searchapi.service.ProductService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

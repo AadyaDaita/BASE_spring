@@ -1,5 +1,6 @@
-package com.nighthawk.spring_portfolio.mvc.searchapi.entity;
+package com.nighthawk.spring_portfolio.mvc.searchapi.products;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,15 +12,21 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
+
+@Data  // Annotations to simplify writing code (ie constructors, setters)
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "products")
-public class Product {
+@Entity // Annotation to simplify creating an entity, which is a lightweight persistence domain object. Typically, an entity represents a table in a relational database, and each entity instance corresponds to a row in that table.
 
+
+public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @Column(unique=true)
+    private String joke;
+
     private String sku;
     private String name;
     private String description;
