@@ -1,4 +1,4 @@
-package com.nighthawk.spring_portfolio.mvc.searchapi.products;
+package com.nighthawk.spring_portfolio.mvc.data;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -25,8 +25,8 @@ public class Product {
     private Long id;
 
     @Column(unique=true)
-    private String joke;
-
+    private String product;
+    
     private String sku;
     private String name;
     private String description;
