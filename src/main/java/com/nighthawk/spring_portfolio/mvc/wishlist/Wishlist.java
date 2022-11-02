@@ -1,4 +1,4 @@
-package com.nighthawk.spring_portfolio.mvc.jokes;
+package com.nighthawk.spring_portfolio.mvc.wishlist;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,8 +16,8 @@ public class Wishlist {
     private Long id;
 
     @Column(unique=true)
-    private String joke;
+    private String item;
 
-    private int haha;
-    private int boohoo;    
+    private int like;
+    private int dislike;    
 }

@@ -1,4 +1,4 @@
-package com.nighthawk.spring_portfolio.mvc.jokes;
+package com.nighthawk.spring_portfolio.mvc.wishlist;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,13 +14,13 @@ public class WishlistApiController {
  
     // Autowired enables Control to connect URI request and POJO Object to easily for Database CRUD operations
     @Autowired
-    private JokesJpaRepository repository;
+    private WishlistJpaRepository repository;
 
     /* GET List of Jokes
      * @GetMapping annotation is used for mapping HTTP GET requests onto specific handler methods.
      */
     @GetMapping("/")
-    public ResponseEntity<List<Jokes>> getJokes() {
+    public ResponseEntity<List<Wishlist>> getWishlist() {
         // ResponseEntity returns List of Jokes provide by JPA findAll()
         return new ResponseEntity<>( repository.findAll(), HttpStatus.OK);
     }
@@ -30,18 +30,18 @@ public class WishlistApiController {
      * @PathVariable annotation extracts the templated part {id}, from the URI
      */
     @PutMapping("/like/{id}")
-    public ResponseEntity<Jokes> setLike(@PathVariable long id) {
+    public ResponseEntity<Wishlist> setLike(@PathVariable long id) {
         /* 
         * Optional (below) is a container object which helps determine if a result is present. 
         * If a value is present, isPresent() will return true
         * get() will return the value.
         */
-        Optional<Jokes> optional = repository.findById(id);
+        Optional<Wishlist> optional = repository.findById(id);
         if (optional.isPresent()) {  // Good ID
-            Jokes joke = optional.get();  // value from findByID
-            joke.setHaha(joke.getHaha()+1); // increment value
-            repository.save(joke);  // save entity
-            return new ResponseEntity<>(joke, HttpStatus.OK);  // OK HTTP response: status code, headers, and body
+            Wishlist.item = optional.get();  // value from findByID
+            joke.setHaha(item.getLike()+1); // increment value
+            repository.save(item);  // save entity
+            return new ResponseEntity<>(item, HttpStatus.OK);  // OK HTTP response: status code, headers, and body
         }
         // Bad ID
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);  // Failed HTTP response: status code, headers, and body
@@ -50,13 +50,13 @@ public class WishlistApiController {
     /* Update Jeer
      */
     @PutMapping("/jeer/{id}")
-    public ResponseEntity<Jokes> setJeer(@PathVariable long id) {
-        Optional<Jokes> optional = repository.findById(id);
+    public ResponseEntity<Wishlist> setJeer(@PathVariable long id) {
+        Optional<Wishlist> optional = repository.findById(id);
         if (optional.isPresent()) {  // Good ID
-            Jokes joke = optional.get();
-            joke.setBoohoo(joke.getBoohoo()+1);
-            repository.save(joke);
-            return new ResponseEntity<>(joke, HttpStatus.OK);
+            Wishlist item = optional.get();
+            item.setBoohoo(item.getBoohoo()+1);
+            repository.save(item);
+            return new ResponseEntity<>(item, HttpStatus.OK);
         }
         // Bad ID
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
