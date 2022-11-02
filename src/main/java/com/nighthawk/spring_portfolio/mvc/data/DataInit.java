@@ -51,16 +51,31 @@ public class DataInit {
             
             // starting jokes
             final String[] productArray = {
-                "Shirt",
-                "Pants"
+                "The Striped Sweater",
+                "The Button-Up",
+                "The Camel Trench Coat",
+                "The Sleek Loafers",
+                "The Classic Jeans",
+                "The Black Dress",
+                "The Everyday Sunglasses",
+                "The Wrap Skirt",
+                "The Timeless Timepiece",
+                "The Tailored Blazer",
+                "The White Sneakers",
+                "The Work Pants",
+                "The White T-Shirt",
+                "The Ballet Flats",
+                "The Little White Dress",
+                "The Gold Hoops",
+                "The Carryall Tote"
             };
 
             // make sure Joke database is populated with starting jokes
             for (String product : productArray) {
                 List<Product> test = productrepository.findByProductIgnoreCase(product);
                 if (test.size() == 0) {
-                    Product p = new Product();
-                    p.setName(product);
+                    Product p = new Product(null, product, 0,0);
+                    p.setProduct(product);
                     productrepository.save(p); //JPA save
                 }
             }

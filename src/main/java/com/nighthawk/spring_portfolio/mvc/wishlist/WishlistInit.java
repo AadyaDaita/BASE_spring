@@ -7,13 +7,16 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
+   /*
 @Component // Scans Application for ModelInit Bean, this detects CommandLineRunner
+
 public class WishlistInit {
     
     // Inject repositories
     @Autowired WishlistJpaRepository repository;
     
-    @Bean
+   // @Bean
+
     CommandLineRunner run() {  // The run() method will be executed after the application starts
         return args -> {
             // Fail safe data validations
@@ -51,3 +54,6 @@ public class WishlistInit {
     }
     
 }
+
+
+ */
