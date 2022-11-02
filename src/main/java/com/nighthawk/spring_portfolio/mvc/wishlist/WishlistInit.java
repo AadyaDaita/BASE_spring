@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 public class WishlistInit {
     
     // Inject repositories
-    @Autowired JokesJpaRepository repository;
+    @Autowired WishlistJpaRepository repository;
     
     @Bean
     CommandLineRunner run() {  // The run() method will be executed after the application starts
@@ -19,7 +19,7 @@ public class WishlistInit {
             // Fail safe data validations
 
             // starting jokes
-            final String[] jokesArray = {
+            final String[] wishlistArray = {
                 "If you give someone a program... you will frustrate them for a day; if you teach them how to program... you will frustrate them for a lifetime.",
                 "Q: Why did I divide sin by tan? A: Just cos.",
                 "UNIX is basically a simple operating system... but you have to be a genius to understand the simplicity.",
@@ -41,10 +41,10 @@ public class WishlistInit {
             };
 
             // make sure Joke database is populated with starting jokes
-            for (String joke : jokesArray) {
-                List<Jokes> test = repository.findByJokeIgnoreCase(joke);  // JPA lookup
+            for (String item : wishlistArray) {
+                List<Wishlist> test = repository.findByItemIgnoreCase(item);  // JPA lookup
                 if (test.size() == 0)
-                    repository.save(new Jokes(null, joke, 0, 0)); //JPA save
+                    repository.save(new Wishlist(null, item, 0, 0)); //JPA save
             }
             
         };

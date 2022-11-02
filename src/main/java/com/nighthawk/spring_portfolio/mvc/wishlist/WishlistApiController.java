@@ -38,8 +38,8 @@ public class WishlistApiController {
         */
         Optional<Wishlist> optional = repository.findById(id);
         if (optional.isPresent()) {  // Good ID
-            Wishlist.item = optional.get();  // value from findByID
-            joke.setHaha(item.getLike()+1); // increment value
+            Wishlist item = optional.get();  // value from findByID
+            item.setLike(item.getLike()+1); // increment value
             repository.save(item);  // save entity
             return new ResponseEntity<>(item, HttpStatus.OK);  // OK HTTP response: status code, headers, and body
         }
@@ -49,12 +49,12 @@ public class WishlistApiController {
 
     /* Update Jeer
      */
-    @PutMapping("/jeer/{id}")
-    public ResponseEntity<Wishlist> setJeer(@PathVariable long id) {
+    @PutMapping("/dislike/{id}")
+    public ResponseEntity<Wishlist> setDislike(@PathVariable long id) {
         Optional<Wishlist> optional = repository.findById(id);
         if (optional.isPresent()) {  // Good ID
             Wishlist item = optional.get();
-            item.setBoohoo(item.getBoohoo()+1);
+            item.setDislike(item.getDislike()+1);
             repository.save(item);
             return new ResponseEntity<>(item, HttpStatus.OK);
         }
