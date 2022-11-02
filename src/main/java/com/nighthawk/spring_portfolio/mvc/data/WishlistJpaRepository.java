@@ -1,4 +1,4 @@
-package com.nighthawk.spring_portfolio.mvc.wishlist;
+package com.nighthawk.spring_portfolio.mvc.data;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;

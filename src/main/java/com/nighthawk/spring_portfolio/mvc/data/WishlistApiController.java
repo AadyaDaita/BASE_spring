@@ -1,4 +1,4 @@
-package com.nighthawk.spring_portfolio.mvc.wishlist;
+package com.nighthawk.spring_portfolio.mvc.data;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,7 +14,7 @@ public class WishlistApiController {
  
     // Autowired enables Control to connect URI request and POJO Object to easily for Database CRUD operations
     @Autowired
-    private WishlistJpaRepository repository;
+    private WishlistJpaRepository wishlistrepository;
 
     /* GET List of Jokes
      * @GetMapping annotation is used for mapping HTTP GET requests onto specific handler methods.
@@ -22,7 +22,7 @@ public class WishlistApiController {
     @GetMapping("/")
     public ResponseEntity<List<Wishlist>> getWishlist() {
         // ResponseEntity returns List of Jokes provide by JPA findAll()
-        return new ResponseEntity<>( repository.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>( wishlistrepository.findAll(), HttpStatus.OK);
     }
 
     /* Update Like
@@ -36,11 +36,11 @@ public class WishlistApiController {
         * If a value is present, isPresent() will return true
         * get() will return the value.
         */
-        Optional<Wishlist> optional = repository.findById(id);
+        Optional<Wishlist> optional = wishlistrepository.findById(id);
         if (optional.isPresent()) {  // Good ID
             Wishlist item = optional.get();  // value from findByID
             item.setLike(item.getLike()+1); // increment value
-            repository.save(item);  // save entity
+            wishlistrepository.save(item);  // save entity
             return new ResponseEntity<>(item, HttpStatus.OK);  // OK HTTP response: status code, headers, and body
         }
         // Bad ID
@@ -51,11 +51,11 @@ public class WishlistApiController {
      */
     @PutMapping("/dislike/{id}")
     public ResponseEntity<Wishlist> setDislike(@PathVariable long id) {
-        Optional<Wishlist> optional = repository.findById(id);
+        Optional<Wishlist> optional = wishlistrepository.findById(id);
         if (optional.isPresent()) {  // Good ID
             Wishlist item = optional.get();
             item.setDislike(item.getDislike()+1);
-            repository.save(item);
+            wishlistrepository.save(item);
             return new ResponseEntity<>(item, HttpStatus.OK);
         }
         // Bad ID
