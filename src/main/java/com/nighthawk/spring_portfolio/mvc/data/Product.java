@@ -26,7 +26,7 @@ public class Product {
 
     @Column(unique=true)
     private String product;
-    
+
     private String sku;
     private String name;
     private String description;

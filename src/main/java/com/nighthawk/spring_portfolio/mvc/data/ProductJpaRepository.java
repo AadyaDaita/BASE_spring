@@ -8,4 +8,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface ProductJpaRepository extends JpaRepository<Product, Long> {
     // JPA has many built in methods, these few have been prototyped for this application
     List<Product> findByProductIgnoreCase(String product);
+ 
 }
